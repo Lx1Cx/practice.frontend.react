@@ -1,0 +1,40 @@
+.wrapper {
+    width: 100dvw;
+    height: 100dvh;
+    background-color: #F8F8F8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 36px;
+}
+
+.caption {
+    font-size: 24px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+    width: 23dvw;
+    border-radius: 20px;
+    background-color: white;
+    padding: 30px;
+}
+
+.link {
+    text-decoration: none;
+    color: #EB2532;
+    font-weight: 600;
+}
+
+.modal_item {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
