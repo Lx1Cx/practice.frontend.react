@@ -1,6 +1,16 @@
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import LoginPage from "./pages/auth/LoginPage/LoginPage.tsx";
+
+const router = createBrowserRouter([
+    {
+        path: "/login",
+        element: <LoginPage/>
+    }
+])
+
 function App() {
     return (
-        <div></div>
+        <RouterProvider router={router}/>
     )
 }
 
