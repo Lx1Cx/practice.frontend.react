@@ -1,5 +1,9 @@
 export interface IGetPlacesResponse {
-    id: number
+    id: string
     name: string
     description: string
+    images: {
+        id: string
+        name: string
+    }[]
 }
