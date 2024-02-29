@@ -13,13 +13,17 @@ import { persistStore,
 
 } from "redux-persist"
 import storage from "redux-persist/lib/storage"
-import {placeApi} from "./entity/Place/api/PlaceApi.ts"; // defaults to localStorage for web
+import {placeApi} from "./entity/Place/api/PlaceApi.ts";
+import {fileApi} from "./entity/File/api/FileApi.ts";
+import {fileSlice} from "./entity/File/slices/fileSlice.ts"; // defaults to localStorage for web
 
 
 const rootReducer = combineReducers({
     [authApi.reducerPath]: authApi.reducer,
     [userSlice.reducerPath]: userSlice.reducer,
-    [placeApi.reducerPath]: placeApi.reducer
+    [placeApi.reducerPath]: placeApi.reducer,
+    [fileApi.reducerPath]: fileApi.reducer,
+    [fileSlice.reducerPath]: fileSlice.reducer
 })
 
 const persistConfig = {
@@ -39,7 +43,8 @@ export const store = configureStore({
             },
         })
             .concat(authApi.middleware)
-            .concat(placeApi.middleware),
+            .concat(placeApi.middleware)
+            .concat(fileApi.middleware),
 })
 
 export const persistor = persistStore(store)
