@@ -61,7 +61,7 @@ export const placeApi = createApi({
             })
         }),
 
-        deletePlaceById: build.mutation<void, number>({
+        deletePlaceById: build.mutation<void, string>({
             query: (id) => ({
                 url: `/tour-places/${id}`,
                 method: "DELETE",
