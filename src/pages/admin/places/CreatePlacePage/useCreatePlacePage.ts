@@ -5,6 +5,8 @@ import {useUploadFileMutation} from "../../../../entity/File/api/FileApi.ts";
 import {AlertService} from "../../../../shared/services/AlertService.ts";
 import {useCreatePlaceMutation} from "../../../../entity/Place/api/PlaceApi.ts";
 import {useNavigate} from "react-router-dom";
+import {useAppDispatch, useAppSelector} from "../../../../store.ts";
+import {addImage, resetImages} from "../../../../entity/File/slices/fileSlice.ts";
 
 export const useCreatePlacePage = () => {
 
@@ -13,15 +15,15 @@ export const useCreatePlacePage = () => {
     const [createPlace, {error: createPlaceError, isSuccess}] = useCreatePlaceMutation()
     const ref = useRef<HTMLInputElement | null>(null)
     const navigate = useNavigate()
+    const dispatch = useAppDispatch()
+    const images = useAppSelector(state => state.fileSlice.images)
+
 
     useEffect(() => {
         if (uploadFileResult) {
-            setRequestData(prevState => ({
-                ...prevState,
-                images: prevState && prevState.images && [...prevState.images, uploadFileResult.id]
-            }))
+            dispatch(addImage(uploadFileResult))
         }
-    }, [uploadFileResult]);
+    }, [uploadFileResult, dispatch]);
 
     useEffect(() => {
         if (uploadFileError && "data" in uploadFileError) {
@@ -49,11 +51,12 @@ export const useCreatePlacePage = () => {
             await createPlace({
                 name: requestData.name,
                 description: requestData.description,
-                images: requestData.images ? requestData.images : []
+                imageIds: images.map(image => image.id)
             })
         }
 
         if (isSuccess) {
+            dispatch(resetImages())
             navigate(-1)
         }
     }
