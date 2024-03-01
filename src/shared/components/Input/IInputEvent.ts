@@ -1,4 +1,4 @@
 export interface IInputEvent {
     fieldName: string
-    fieldValue: string
+    fieldValue: string | number | Date
 }
