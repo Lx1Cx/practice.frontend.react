@@ -6,7 +6,7 @@ import AdminItemWrapper from "../../UI/AdminWrapper/AdminItemWrapper.tsx";
 
 const MainPlacesPage = () => {
 
-    const {navigate, getAllPlacesResult, isLoading} = useMainPlacesPage()
+    const {navigate, getAllPlacesResult, isLoading, DeleteHandler} = useMainPlacesPage()
 
     //todo: Change this
 
@@ -22,11 +22,11 @@ const MainPlacesPage = () => {
                 {getAllPlacesResult.length === 0
                     ? <p>Здесь пока ничего нет</p>
                     : getAllPlacesResult.map(place => (
-                        <AdminItemWrapper>
+                        <AdminItemWrapper key={place.id} onDelete={async () => await DeleteHandler(place.id)}>
                             <PlaceCard
-                                key={place.id}
                                 name={place.name}
                                 description={place.description}
+                                image={place.images.length !== 0 ? place.images[0].name : undefined}
                             />
                         </AdminItemWrapper>
                     ))
