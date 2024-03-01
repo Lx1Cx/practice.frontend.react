@@ -1,7 +1,11 @@
 import {FC, PropsWithChildren} from "react";
 import classes from "./adminItemWrapper.module.css"
 
-const AdminItemWrapper: FC<PropsWithChildren> = ({children}) => {
+interface IAdminItemWrapperProps {
+    onDelete?: () => Promise<void>
+}
+
+const AdminItemWrapper: FC<PropsWithChildren<IAdminItemWrapperProps>> = ({children, onDelete}) => {
 
     //todo: Change to icons
 
@@ -9,7 +13,7 @@ const AdminItemWrapper: FC<PropsWithChildren> = ({children}) => {
         <div className={classes.wrapper}>
             <div className={classes.buttons}>
                 <p>Изменить</p>
-                <p>Удалить</p>
+                <p className={classes.delete} onClick={onDelete}>Удалить</p>
             </div>
             {children}
         </div>

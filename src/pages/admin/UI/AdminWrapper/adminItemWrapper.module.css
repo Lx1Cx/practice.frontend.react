@@ -8,3 +8,9 @@
     display: flex;
     gap: 30px;
 }
+
+.delete {
+    cursor: pointer;
+    color: #EB2532;
+    font-weight: 500;
+}
