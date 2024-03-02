@@ -11,7 +11,7 @@ interface ITourCardProps {
     price: number
 }
 
-const TourCard: FC<ITourCardProps> = ({name, from, price}) => {
+const TourCard: FC<ITourCardProps> = ({name, from, price, dateEnd, dateStart}) => {
 
     const format = new Intl.NumberFormat("ru", {
         style: "currency",
@@ -19,17 +19,22 @@ const TourCard: FC<ITourCardProps> = ({name, from, price}) => {
         minimumFractionDigits: 1
     })
 
+    const dateFormat = new Intl.DateTimeFormat("ru", {
+        month: "numeric",
+        day: "numeric"
+    })
+
     return (
         <div className={classes.card}>
             <div className={classes.image}>
 
             </div>
-            <div     className={classes.info}>
+            <div className={classes.info}>
                 <p className={classes.caption}>{name}</p>
                 <p className={classes.city}>{from}</p>
                 <div className={classes.info_item}>
                     <div className={classes.date}>
-                        20.20 - 21.20
+                        {dateFormat.format(new Date(dateStart))} - {dateFormat.format(new Date(dateEnd))}
                     </div>
                     <p className={classes.price}>{format.format(price)}</p>
                 </div>
