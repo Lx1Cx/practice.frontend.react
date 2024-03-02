@@ -46,7 +46,8 @@ export const tourApi = createApi({
             query: (id) => ({
                 url: `tours/${id}`,
                 method: "DELETE",
-            })
+            }),
+            invalidatesTags:  [{ type: 'tours', id: 'LIST' }]
         })
     })
 })
