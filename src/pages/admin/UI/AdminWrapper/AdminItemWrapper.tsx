@@ -12,7 +12,6 @@ const AdminItemWrapper: FC<PropsWithChildren<IAdminItemWrapperProps>> = ({childr
     return (
         <div className={classes.wrapper}>
             <div className={classes.buttons}>
-                <p>Изменить</p>
                 <p className={classes.delete} onClick={onDelete}>Удалить</p>
             </div>
             {children}
