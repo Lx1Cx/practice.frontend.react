@@ -5,7 +5,15 @@ export interface TourEntity {
     price: number
     dateStart: Date
     dateEnd: Date
-    tourPlaceFrom: string
-    tourPlaceTo: string
+    tourFrom: {
+        id: string
+        description: string
+        name: string
+    }
+    tourTo: {
+        id: string
+        description: string
+        name: string
+    }
     images_Ids: string[]
 }
