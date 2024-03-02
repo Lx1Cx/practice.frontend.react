@@ -1,0 +1,9 @@
+.card {
+    width: 10dvw;
+    height: 200px;
+    border: 1px solid black;
+}
+
+.active_card {
+
+}

@@ -78,6 +78,7 @@ export const useCreateTourPage = () => {
         ref,
         UploadFileHandler,
         ChangeHandler,
-        SubmitHandler
+        SubmitHandler,
+        dispatch
     }
 }
