@@ -8,10 +8,10 @@ import {setTourFrom, setTourTo} from "../../../../entity/Tours/slices/tourSlice.
 
 const CreateTourPage = () => {
 
-    const {ref, UploadFileHandler, ChangeHandler, dispatch} = useCreateTourPage()
+    const {ref, UploadFileHandler, ChangeHandler, dispatch, SubmitHandler} = useCreateTourPage()
 
     return (
-        <form className={classes.form}>
+        <form className={classes.form} onSubmit={SubmitHandler}>
             <h1>Create tour</h1>
             <Input onChange={ChangeHandler} name={"name"} type={"text"} placeholder={"Input name of tour"}/>
             <Input onChange={ChangeHandler} name={"description"} type={"text"}

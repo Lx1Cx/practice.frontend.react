@@ -13,6 +13,7 @@ export const useCreateTourPage = () => {
     const ref = useRef<HTMLInputElement | null>(null)
     const [uploadFile, {data: uploadFileResult, error: uploadFileError}] = useUploadFileMutation()
     const images = useAppSelector(state => state.fileSlice.images)
+    const tourPlaces = useAppSelector(state => state.tourSlice)
     const dispatch = useAppDispatch()
     const [requestData, setRequestData] = useState<ICreateTourDto>()
     const [createTour, {error: createTourError, isSuccess}] = useCreateTourMutation()
@@ -55,13 +56,14 @@ export const useCreateTourPage = () => {
 
     const SubmitHandler = async (event: FormEvent) => {
         event.preventDefault()
-        if (requestData && requestData.name && requestData.images_Ids && requestData.description && requestData.tourPlaceTo && requestData.tourPlaceFrom && requestData.price && requestData.dateEnd && requestData.dateStart) {
+        console.log(requestData)
+        if (requestData && requestData.name && requestData.description && tourPlaces.from && tourPlaces.to && requestData.price && requestData.dateEnd && requestData.dateStart) {
             await createTour({
                 name: requestData.name,
                 description: requestData.description,
                 price: requestData.price,
-                tourPlaceFrom: requestData.tourPlaceFrom,
-                tourPlaceTo: requestData.tourPlaceTo,
+                to: tourPlaces.from,
+                from: tourPlaces.to,
                 dateStart: requestData.dateStart,
                 dateEnd: requestData.dateEnd,
                 images_Ids: images.map(image => image.id)
