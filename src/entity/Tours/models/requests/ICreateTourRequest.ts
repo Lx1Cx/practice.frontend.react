@@ -4,7 +4,7 @@ export interface ICreateTourRequest {
     price: number
     dateStart: Date
     dateEnd: Date
-    tourPlaceFrom: string
-    tourPlaceTo: string
+    from: string
+    to: string
     images_Ids: string[]
 }
