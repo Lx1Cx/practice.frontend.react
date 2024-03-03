@@ -7,8 +7,6 @@ interface IAdminItemWrapperProps {
 
 const AdminItemWrapper: FC<PropsWithChildren<IAdminItemWrapperProps>> = ({children, onDelete}) => {
 
-    //todo: Change to icons
-
     return (
         <div className={classes.wrapper}>
             <div className={classes.buttons}>

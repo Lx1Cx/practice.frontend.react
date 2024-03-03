@@ -8,8 +8,6 @@ const MainPlacesPage = () => {
 
     const {navigate, getAllPlacesResult, isLoading, DeleteHandler} = useMainPlacesPage()
 
-    //todo: Change this
-
     if (isLoading || !getAllPlacesResult) {
         return <p>Loading</p>
     }

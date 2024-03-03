@@ -6,6 +6,7 @@ interface IMainAdminPageItemProps {
     text: string
     href: string
 }
+
 const MainAdminPageItem: FC<IMainAdminPageItemProps> = ({text, href}) => {
     return (
         <Link to={`/admin/${href}`} className={classes.wrapper}>
