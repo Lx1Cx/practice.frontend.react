@@ -12,12 +12,22 @@ import { persistStore,
     REGISTER,
 
 } from "redux-persist"
-import storage from "redux-persist/lib/storage" // defaults to localStorage for web
+import storage from "redux-persist/lib/storage"
+import {placeApi} from "./entity/Place/api/PlaceApi.ts";
+import {fileApi} from "./entity/File/api/FileApi.ts";
+import {fileSlice} from "./entity/File/slices/fileSlice.ts";
+import {tourApi} from "./entity/Tours/api/TourApi.ts";
+import {tourSlice} from "./entity/Tours/slices/tourSlice.ts"; // defaults to localStorage for web
 
 
 const rootReducer = combineReducers({
     [authApi.reducerPath]: authApi.reducer,
-    [userSlice.reducerPath]: userSlice.reducer
+    [userSlice.reducerPath]: userSlice.reducer,
+    [placeApi.reducerPath]: placeApi.reducer,
+    [fileApi.reducerPath]: fileApi.reducer,
+    [fileSlice.reducerPath]: fileSlice.reducer,
+    [tourApi.reducerPath]: tourApi.reducer,
+    [tourSlice.reducerPath]: tourSlice.reducer
 })
 
 const persistConfig = {
@@ -35,7 +45,11 @@ export const store = configureStore({
             serializableCheck: {
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
-        }).concat(authApi.middleware),
+        })
+            .concat(authApi.middleware)
+            .concat(placeApi.middleware)
+            .concat(fileApi.middleware)
+            .concat(tourApi.middleware),
 })
 
 export const persistor = persistStore(store)

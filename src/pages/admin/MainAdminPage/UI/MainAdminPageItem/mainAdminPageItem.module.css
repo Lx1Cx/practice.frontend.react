@@ -1,0 +1,19 @@
+.wrapper {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #EB2532;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #EB2532;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: .2s all;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.wrapper:hover {
+    color: white;
+    background-color: #EB2532;
+}

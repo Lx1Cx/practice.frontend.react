@@ -1,0 +1,18 @@
+.form {
+    margin: 100px;
+    width: 30dvw;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upload_file {
+    display: none;
+}
+
+.upload_text {
+    font-weight: 600;
+    color: #EB2532;
+    cursor: pointer;
+}

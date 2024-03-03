@@ -1,0 +1,20 @@
+.wrapper {
+    width: 100dvw;
+    height: 100dvh;
+    background-color: #DBDBDB;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    width: 30dvw;
+    background-color: white;
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
