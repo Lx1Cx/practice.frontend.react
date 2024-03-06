@@ -6,15 +6,26 @@ import MainPlacesPage from "./pages/admin/places/MainPlacesPage/MainPlacesPage.t
 import CreatePlacePage from "./pages/admin/places/CreatePlacePage/CreatePlacePage.tsx";
 import MainToursPage from "./pages/admin/tours/MainToursPage/MainToursPage.tsx";
 import CreateTourPage from "./pages/admin/tours/CreateTourPage/CreateTourPage.tsx";
+import MainPage from "./pages/user/MainPage/MainPage.tsx";
 
 const router = createBrowserRouter([
     {
-        path: "/login",
-        element: <LoginPage/>
-    },
-    {
-        path: "/registration",
-        element: <RegistrationPage/>
+        path: "",
+        children: [
+            {
+                path: "",
+                element: <MainPage/>
+            },
+
+            {
+                path: "login",
+                element: <LoginPage/>
+            },
+            {
+                path: "registration",
+                element: <RegistrationPage/>
+            },
+        ]
     },
 
     {
