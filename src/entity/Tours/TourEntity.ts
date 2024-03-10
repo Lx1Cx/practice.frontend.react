@@ -15,5 +15,8 @@ export interface TourEntity {
         description: string
         name: string
     }
-    images_Ids: string[]
+    images: {
+        id: string
+        name: string
+    }[]
 }
