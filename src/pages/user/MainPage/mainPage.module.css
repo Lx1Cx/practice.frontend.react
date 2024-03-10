@@ -1,19 +1,32 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.slider {
-    width: 100dvw;
-    height: 100dvh;
-}
-
 .info {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 5px;
     color: white;
     background-blend-mode: multiply;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.4);
     background-size: cover;
+    width: 40%;
+    margin-left: 7%;
+}
+
+.caption {
+    font-weight: 800;
+    font-size: 64px;
+}
+
+.description {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 170%;
+}
+
+.slide {
+    padding-top: 10%;
+    width: 100dvw;
+    height: 100dvh;
+    background-size: cover;
+    background-position: center;
 }
