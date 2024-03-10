@@ -37,6 +37,13 @@ export const useCreatePlacePage = () => {
         }
     }, [createPlaceError]);
 
+    useEffect(() => {
+        if (isSuccess) {
+            dispatch(resetImages())
+            navigate(-1)
+        }
+    }, [isSuccess]);
+
     const ChangeHandler = ({fieldName, fieldValue}: IInputEvent) => {
         setRequestData(prevState => ({
             ...prevState,
@@ -53,11 +60,6 @@ export const useCreatePlacePage = () => {
                 description: requestData.description,
                 imageIds: images.map(image => image.id)
             })
-        }
-
-        if (isSuccess) {
-            dispatch(resetImages())
-            navigate(-1)
         }
     }
 

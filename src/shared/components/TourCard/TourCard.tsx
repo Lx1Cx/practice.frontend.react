@@ -1,5 +1,8 @@
 import classes from "./tourCard.module.css"
 import {FC} from "react";
+import {BASE_API_URL} from "../../../consts.ts";
+import {Link} from "react-router-dom";
+import {FormatService} from "../../services/FormatService.ts";
 
 interface ITourCardProps {
     id: string
@@ -11,35 +14,28 @@ interface ITourCardProps {
     price: number
 }
 
-const TourCard: FC<ITourCardProps> = ({name, from, price, dateEnd, dateStart}) => {
-
-    const format = new Intl.NumberFormat("ru", {
-        style: "currency",
-        currency: "RUB",
-        minimumFractionDigits: 1
-    })
-
-    const dateFormat = new Intl.DateTimeFormat("ru", {
-        month: "numeric",
-        day: "numeric"
-    })
+const TourCard: FC<ITourCardProps> = ({id, name, from, price, dateEnd, dateStart, image}) => {
 
     return (
-        <div className={classes.card}>
-            <div className={classes.image}>
+        <Link to={`/tours/${id}`} className={classes.card}>
+            {image
+                ? <img className={classes.image} src={`${BASE_API_URL}/${image}`} alt={image} title={name}/>
+                : <div className={classes.image}>
 
-            </div>
+                </div>}
+
             <div className={classes.info}>
                 <p className={classes.caption}>{name}</p>
                 <p className={classes.city}>{from}</p>
                 <div className={classes.info_item}>
-                    <div className={classes.date}>
-                        {dateFormat.format(new Date(dateStart))} - {dateFormat.format(new Date(dateEnd))}
+                    <div>
+                        <p>с {FormatService.date().format(new Date(dateStart))}</p>
+                        <p>до {FormatService.date().format(new Date(dateEnd))}</p>
                     </div>
-                    <p className={classes.price}>{format.format(price)}</p>
+                    <p className={classes.price}>{FormatService.currency().format(price)}</p>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

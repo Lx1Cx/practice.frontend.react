@@ -37,6 +37,13 @@ export const useCreateTourPage = () => {
         }
     }, [createTourError]);
 
+    useEffect(() => {
+        if (isSuccess) {
+            dispatch(resetImages())
+            navigate(-1)
+        }
+    }, [isSuccess]);
+
     const UploadFileHandler = async (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.files) {
             const file = event.target.files[0]
@@ -68,11 +75,6 @@ export const useCreateTourPage = () => {
                 dateEnd: requestData.dateEnd,
                 images_Ids: images.map(image => image.id)
             })
-        }
-
-        if (isSuccess) {
-            dispatch(resetImages())
-            navigate(-1)
         }
     }
 

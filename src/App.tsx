@@ -6,15 +6,50 @@ import MainPlacesPage from "./pages/admin/places/MainPlacesPage/MainPlacesPage.t
 import CreatePlacePage from "./pages/admin/places/CreatePlacePage/CreatePlacePage.tsx";
 import MainToursPage from "./pages/admin/tours/MainToursPage/MainToursPage.tsx";
 import CreateTourPage from "./pages/admin/tours/CreateTourPage/CreateTourPage.tsx";
+import MainPage from "./pages/user/MainPage/MainPage.tsx";
+import Layout from "./shared/components/Layout/Layout.tsx";
+import ToursPage from "./pages/user/ToursPage/ToursPage.tsx";
+import TourPage from "./pages/user/TourPage/TourPage.tsx";
 
 const router = createBrowserRouter([
     {
-        path: "/login",
-        element: <LoginPage/>
+        path: "",
+        element: <Layout/>,
+        children: [
+            {
+                path: "",
+                element: <MainPage/>
+            },
+
+            {
+                path: "tours",
+                children: [
+                    {
+                        path: "",
+                        element: <ToursPage/>,
+                    },
+
+                    {
+                        path: ":id",
+                        element: <TourPage/>
+                    }
+                ]
+            },
+        ],
     },
+
     {
-        path: "/registration",
-        element: <RegistrationPage/>
+        path: "",
+        children: [
+            {
+                path: "login",
+                element: <LoginPage/>
+            },
+            {
+                path: "registration",
+                element: <RegistrationPage/>
+            },
+        ]
     },
 
     {

@@ -26,6 +26,20 @@ export const tourApi = createApi({
                 : [ {type: "tours", id: "LIST"}],
         }),
 
+        getToursWithParams: (build).query<TourEntity[], {place?: string, name?: string} | undefined>({
+            query: (args) => ({
+                url: `tours?place=${args?.place ?? ""}&name=${args?.name ?? ""}`,
+                method: "GET",
+            }),
+
+            providesTags: (result) => result
+                ? [
+                    ...result.map(({id}) => ({type: "tours" as const, id})),
+                    {type: "tours", id: "LIST"}
+                ]
+                : [ {type: "tours", id: "LIST"}],
+        }),
+
         getTourById: build.query<TourEntity, string>({
             query: (id) => ({
                 url: `tours/${id}`,
@@ -52,4 +66,4 @@ export const tourApi = createApi({
     })
 })
 
-export const {useGetAllToursQuery, useGetTourByIdQuery, useDeleteTourByIdMutation, useCreateTourMutation} = tourApi
+export const {useGetAllToursQuery, useGetToursWithParamsQuery, useGetTourByIdQuery, useDeleteTourByIdMutation, useCreateTourMutation} = tourApi

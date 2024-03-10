@@ -16,7 +16,7 @@ const MainToursPage = () => {
         <div className={classes.wrapper}>
             <Button onClick={() => navigate("create")}>Create new tour</Button>
 
-            <div>
+            <div className={classes.tours}>
                 {tours.length !== 0 ?
                     tours.map(tour => (
                     <AdminItemWrapper key={tour.id} onDelete={() => DeleteHandler(tour.id)}>
@@ -27,6 +27,7 @@ const MainToursPage = () => {
                             dateStart={tour.dateStart}
                             dateEnd={tour.dateEnd}
                             price={tour.price}
+                            image={tour.images.length !== 0 ? tour.images[0].name : undefined}
                         />
                     </AdminItemWrapper>
                 )) : <p>DataBase empty</p>}
