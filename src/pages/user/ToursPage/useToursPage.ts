@@ -1,19 +1,27 @@
 import {useGetToursWithParamsQuery} from "../../../entity/Tours/api/TourApi.ts";
 import {useNavigate, useSearchParams} from "react-router-dom";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {AlertService} from "../../../shared/services/AlertService.ts";
 import {useGetAllPlacesQuery} from "../../../entity/Place/api/PlaceApi.ts";
+import {IInputEvent} from "../../../shared/components/Input/IInputEvent.ts";
 
 export const useToursPage = () => {
+    const [name, setName] = useState<string>("")
 
     const [params] = useSearchParams()
     const {data: tours, error} = useGetToursWithParamsQuery({
-        place: params.get("place") ?? ""
+        place: params.get("place") ?? "",
+        name: name
     })
     const {data: places} = useGetAllPlacesQuery()
     const navigate = useNavigate()
 
-    console.log(params)
+
+    const ChangeHandler = ({fieldValue}: IInputEvent) => {
+        if (typeof fieldValue === "string") {
+            setName(fieldValue)
+        }
+    }
 
     useEffect(() => {
         if (error && "data" in error) {
@@ -41,6 +49,7 @@ export const useToursPage = () => {
         tours,
         settings,
         places,
-        ClickHandler
+        ClickHandler,
+        ChangeHandler
     }
 }

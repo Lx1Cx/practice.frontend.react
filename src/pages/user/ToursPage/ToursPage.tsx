@@ -4,10 +4,11 @@ import Slider from "react-slick";
 import TourCard from "../../../shared/components/TourCard/TourCard.tsx";
 import {BASE_API_URL} from "../../../consts.ts";
 import Button from "../../../shared/components/Button/Button.tsx";
+import Input from "../../../shared/components/Input/Input.tsx";
 
 const ToursPage = () => {
 
-    const {tours, settings, places, ClickHandler} = useToursPage()
+    const {tours, settings, places, ChangeHandler, ClickHandler} = useToursPage()
 
     if (!tours || !places) {
         return <>Loading</>
@@ -29,19 +30,23 @@ const ToursPage = () => {
                 ))}
             </Slider>
 
-            <div className={classes.tours}>
-                {tours.map(tour => (
-                    <TourCard
-                        key={tour.id}
-                        id={tour.id}
-                        name={tour.name}
-                        from={tour.tourFrom.name}
-                        dateStart={tour.dateStart}
-                        dateEnd={tour.dateEnd}
-                        price={tour.price}
-                        image={tour.images.length !== 0 ? tour.images[0].name : undefined}
-                    />
-                ))}
+
+            <div className={classes.wrapper}>
+                <Input name={"name"} type={"text"} placeholder={"Введите название тура"} onChange={ChangeHandler} styles={{width: "80%", margin: "50px auto 0"}}/>
+                    <div className={classes.tours}>
+                        {tours.map(tour => (
+                            <TourCard
+                                key={tour.id}
+                                id={tour.id}
+                                name={tour.name}
+                                from={tour.tourFrom.name}
+                                dateStart={tour.dateStart}
+                                dateEnd={tour.dateEnd}
+                                price={tour.price}
+                                image={tour.images.length !== 0 ? tour.images[0].name : undefined}
+                            />
+                        ))}
+                    </div>
             </div>
         </div>
     );
