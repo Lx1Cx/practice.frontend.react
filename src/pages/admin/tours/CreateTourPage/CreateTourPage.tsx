@@ -12,21 +12,21 @@ const CreateTourPage = () => {
 
     return (
         <form className={classes.form} onSubmit={SubmitHandler}>
-            <h1>Create tour</h1>
-            <Input onChange={ChangeHandler} name={"name"} type={"text"} placeholder={"Input name of tour"}/>
+            <h1>Создать тур</h1>
+            <Input onChange={ChangeHandler} name={"name"} type={"text"} placeholder={"Введите название тура"}/>
             <Input onChange={ChangeHandler} name={"description"} type={"text"}
-                   placeholder={"Input description of tour"}/>
-            <Input onChange={ChangeHandler} name={"price"} type={"number"} placeholder={"Input price of tour"}/>
+                   placeholder={"Введите описание тура"}/>
+            <Input onChange={ChangeHandler} name={"price"} type={"number"} placeholder={"Введите цену тура"}/>
             <Input onChange={ChangeHandler} name={"dateStart"} type={"date"}/>
             <Input onChange={ChangeHandler} name={"dateEnd"} type={"date"}/>
-            <h1>Tour from</h1>
+            <h1>Выберите место отправки</h1>
             <SelectPlace isFrom={true} onSelect={(id) => dispatch(setTourFrom(id))}/>
-            <h1>Tour to</h1>
+            <h1>Выберите место назначения</h1>
             <SelectPlace isFrom={false} onSelect={(id) => dispatch(setTourTo(id))}/>
-            <p onClick={() => ref.current?.click()} className={classes.upload_text}>Click to upload image</p>
+            <p onClick={() => ref.current?.click()} className={classes.upload_text}>Нажмите чтобы загрузить изображение</p>
             <input onChange={UploadFileHandler} type={"file"} className={classes.upload_file} ref={ref}/>
             <UploadedImages/>
-            <Button>Create tour</Button>
+            <Button>Создать тур</Button>
         </form>
     );
 };

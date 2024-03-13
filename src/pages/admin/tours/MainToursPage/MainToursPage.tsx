@@ -14,7 +14,7 @@ const MainToursPage = () => {
 
     return (
         <div className={classes.wrapper}>
-            <Button onClick={() => navigate("create")}>Create new tour</Button>
+            <Button onClick={() => navigate("create")}>Создать новый тур</Button>
 
             <div className={classes.tours}>
                 {tours.length !== 0 ?
@@ -30,7 +30,7 @@ const MainToursPage = () => {
                             image={tour.images.length !== 0 ? tour.images[0].name : undefined}
                         />
                     </AdminItemWrapper>
-                )) : <p>DataBase empty</p>}
+                )) : <p>Здесь пока ничего нет</p>}
             </div>
         </div>
     );

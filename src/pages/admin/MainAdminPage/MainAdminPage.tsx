@@ -7,7 +7,7 @@ const MainAdminPage = () => {
             <h1>Admin panel</h1>
             <div className={classes.modal}>
                 <MainAdminPageItem text={"Места"} href={"places"}/>
-                <MainAdminPageItem text={"Tours"} href={"tours"}/>
+                <MainAdminPageItem text={"Туры"} href={"tours"}/>
             </div>
         </div>
     );
