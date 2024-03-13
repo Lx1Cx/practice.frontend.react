@@ -23,7 +23,10 @@ const Input: FC<IInputProps> = ({placeholder, onChange, styles, name, type}) => 
             placeholder={placeholder}
             type={type}
             name={name}
-            style={styles}
+            style={{
+                width: styles?.width,
+                margin: styles?.margin
+            }}
             className={classes.input}
             onChange={(event) => {
                 ChangeHandler({
