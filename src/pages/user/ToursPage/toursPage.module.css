@@ -31,6 +31,12 @@
     background-position: center;
 }
 
+.wrapper {
+    display: flex;
+    flex-direction: column;
+
+}
+
 .tours {
     margin: 50px auto;
     width: 80%;
